@@ -1,0 +1,51 @@
+ 
+  //Holds the request to mock-api. This almost works, the request to the server works but the data is wrongly formatted.
+    /*
+    String id = "";
+    id = "/2";
+    String postRequest = (String("POST ") + folderLocation  +" HTTP/1.1\r\n" + "Host: " + hostest + "\r\n" + "Content-Type: text/html\r\n\r\n   {\n        \"id\": \"3\",\n        \"firstname\": \"Mia\",\n        \"lastname\": \"Andersson\",\n        \"role\": \"Manager\",\r\n        \"isactive\": true,\r\n        \"GDPR\": true \n    }");
+    String deleteRequest= (String("DELETE ") + folderLocation +id+" HTTP/1.1\r\n" + "Host: " + hostest + "\r\n" + "Content-Type: text/html\r\n\r\n");
+    String getRequest = (String("GET ") + folderLocation +" HTTP/1.1\r\n" + "Host: " + hostest + "\r\n\r\n");
+    String putRequest = (String("PUT ") + folderLocation +id+" HTTP/1.1\r\n" + "Host: " + hostest + "\r\n" + "Content-Type: text/html\r\n\r\n");
+
+    //test 5-WOOOOOOOORRRRRRKKKKKKSSSSSSSS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if (!client.connect(hostest, 80)) {
+        Serial.println("cconnection failed");
+    }
+    else {
+        client.print(getRequest);
+
+        
+        
+        String read = client.readStringUntil('\n');
+        Serial.println(read);
+        
+        while (!client.available()) {
+
+            delay(200);
+        }
+
+    }
+    */
+
+
+
+
+    void isolateData(String data) {
+    int firstbracket = 0;
+    int firstclosing = 0;
+
+    // Itererar igenom datamängden.
+    for (int i = 0; i < dataReadings.length(); i++)
+    {
+
+        firstbracket = dataReadings.indexOf('{', firstbracket + 1);
+        firstclosing = dataReadings.indexOf('}', firstclosing + 1);
+
+        String employeeone = dataReadings.substring(firstbracket, firstclosing + 1);
+        isolateMembers(employeeone);
+    
+        
+
+    }
+}
